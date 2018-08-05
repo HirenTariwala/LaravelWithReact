@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {getIntialBlogs,getNextBlogs} from '../actions/blogActions'
 
-export default class Example extends Component {
+class Example extends Component {
 
     constructor(){
       super()
@@ -10,7 +12,20 @@ export default class Example extends Component {
         todoList:[],
         isUpdate:false,
         selectedListIndex:null,
+        blogs:[],
+        skip:3,
+        limit:3
       }
+    }
+
+    componentWillReceiveProps(nextProps){
+        if(this.props.blogs !== nextProps.blogs){
+            this.setState({blogs:nextProps.blogs});
+        }
+    }
+
+    componentWillMount(){
+        this.props.getIntialBlogs();
     }
 
     _changeName(name){
@@ -49,6 +64,35 @@ export default class Example extends Component {
       this.setState({todoList:[],name:'',isUpdate:false});
     }
 
+    _getBlogList(){
+        return(
+            <table className="table table-striped">
+                <tr>
+                    <th>Id</th>
+                    <th>BlogTitle</th>
+                    <th>Description</th>
+                </tr>
+                {
+                    this.state.blogs.map((blog,i)=>{
+                        return(
+                            <tr key={i}>
+                                <td>{blog._id}</td>
+                                <td>{blog.blogtitle}</td>
+                                <td>{blog.desc}</td>
+                            </tr>
+                        )
+                    })
+                }
+            </table>
+        )
+    }
+
+    _loadNextBlogs(){
+        this.props.getNextBlogs(this.state.skip,this.state.limit).then(()=>{
+            this.setState({skip:this.state.skip+=3})
+        });
+    }
+
     render() {
       const {name,isUpdate} = this.state;
         return (
@@ -63,6 +107,9 @@ export default class Example extends Component {
                                 <button className="btn-danger" type="buton" onClick={()=>this._clearTodoList()}>Clear List</button>
                                 <h1>My TodoList</h1>
                                 {this._getTodoList()}
+                                <h1>My Blogs</h1>
+                                {this._getBlogList()}
+                                <button className="btn btn-info" onClick={()=>{this._loadNextBlogs()}}>Load More...</button>
                             </div>
                         </div>
                     </div>
@@ -72,6 +119,13 @@ export default class Example extends Component {
     }
 }
 
-if (document.getElementById('example')) {
-    ReactDOM.render(<Example />, document.getElementById('example'));
+function mapStateToProps(state) {
+    return { blogs : state.blogs.blogs }
 }
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({getIntialBlogs,getNextBlogs},dispatch);
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Example)
+

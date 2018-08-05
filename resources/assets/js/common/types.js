@@ -1,0 +1,2 @@
+export const GET_INTIAL_BLOGS = 'GET_INTIAL_BLOGS';
+export const GET_NEXT_BLOGS = 'GET_NEXT_BLOGS';

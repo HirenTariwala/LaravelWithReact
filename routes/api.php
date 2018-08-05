@@ -16,3 +16,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('blogs','BlogController@getAllBlogs');
+Route::get('nextBlogs/{skip}/{limit}','BlogController@getNextBlogs');
