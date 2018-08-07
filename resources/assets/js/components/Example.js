@@ -103,8 +103,8 @@ class Example extends Component {
                             <div className="card-header">Example Component</div>
                             <div className="card-body">
                                 <input className="form-control" value={name} type="text" onChange={(event)=>this._changeName(event.target.value)}/>
-                                {isUpdate ? <button className="btn-primary" type="button" onClick={()=>this._updateTodoList()}>Update</button> : <button className="btn-success" type="button" onClick={()=>this._addInTodoList()}>Add</button>}
-                                <button className="btn-danger" type="buton" onClick={()=>this._clearTodoList()}>Clear List</button>
+                                {isUpdate ? <button className="btn btn-primary" type="button" onClick={()=>this._updateTodoList()}>Update</button> : <button className="btn btn-success" type="button" onClick={()=>this._addInTodoList()}>Add</button>}
+                                <button className="btn btn-danger" type="buton" onClick={()=>this._clearTodoList()}>Clear List</button>
                                 <h1>My TodoList</h1>
                                 {this._getTodoList()}
                                 <h1>My Blogs</h1>
