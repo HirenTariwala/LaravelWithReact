@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('blogs','BlogController@getAllBlogs');
 Route::get('nextBlogs/{skip}/{limit}','BlogController@getNextBlogs');
+Route::get('getMyToken','AuthController@getMyToken');
