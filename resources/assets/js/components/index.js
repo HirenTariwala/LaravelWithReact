@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Example from './Example';
+import Home from './Home/Home';
 import {Provider} from 'react-redux';
 import {createStore,applyMiddleware} from 'redux';
 import promise from 'redux-promise';
@@ -17,6 +18,7 @@ if (document.getElementById('root')) {
             <BrowserRouter>
                     <Switch>
                         <Route exact path="/blogs" component={Example}/>
+                        <Route exact path="/Products" component={Home}/>
                         <Route exact path="/*" component={custom404}/>
                     </Switch>
             </BrowserRouter>
