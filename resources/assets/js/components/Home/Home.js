@@ -1,9 +1,8 @@
 import React from 'react';
+import HomeForMobile from './HomeForMobile/HomeForMobile';
+import HomeForDesktop from './HomeForDesktop/HomeForDesktop';
 import Header from '../masterpage/Header';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import SearchBar from 'material-ui-search-bar';
-
+import {MobileDevice} from '../../common/detectMobileDevice'
 
 class Home extends React.Component{
 
@@ -12,30 +11,11 @@ class Home extends React.Component{
     }
 
     render(){
+        const isMobile =  MobileDevice();
         return(
             <div>
-                <Header/>
-                <div style={{padding:'10px',marginTop:'10px'}}>
-                <Grid container spacing={16}>
-                    <Grid item sm={8}>
-                        <Paper style={{padding:'8px'}}>
-                            <h4><b>Galaxy s9 | s9+</b></h4>
-                        </Paper>
-                    </Grid>
-                    <Grid item sm={4}>
-
-                            <SearchBar
-                                onChange={() => console.log('onChange')}
-                                onRequestSearch={() => console.log('onRequestSearch')}
-                                style={{
-                                    margin: '0 auto',
-                                    maxWidth: 800
-                                }}
-                            />
-
-                    </Grid>
-                </Grid>
-            </div>
+                <Header isMobile={isMobile}/>
+                { isMobile ? <HomeForMobile/> : <HomeForDesktop/> }
             </div>
         )
     }

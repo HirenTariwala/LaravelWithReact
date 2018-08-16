@@ -1,26 +1,25 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import Typography from '@material-ui/core/Typography';
+import Search from '@material-ui/icons/Search'
+import IconButton from '@material-ui/core/IconButton';
 
 
 class Header extends React.Component{
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
     }
 
     render(){
+        const {isMobile} = this.props;
         return(
             <AppBar position="static" color='default'>
                 <Toolbar>
-                    <IconButton color="inherit" aria-label="Menu">
-                        <MenuIcon />
-                    </IconButton>
                     <Typography align='right' variant="title" color="textSecondary" >
-                        Mobile
+                        MyWebSiteLogo
                     </Typography>
+                    { isMobile && <IconButton style={{position:'fixed',right:'0px'}} aria-haspopup="true" ><Search/></IconButton>}
                 </Toolbar>
 
             </AppBar>

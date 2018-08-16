@@ -18,7 +18,7 @@ if (document.getElementById('root')) {
             <BrowserRouter>
                     <Switch>
                         <Route exact path="/blogs" component={Example}/>
-                        <Route exact path="/Products" component={Home}/>
+                        <Route exact path="/" component={Home}/>
                         <Route exact path="/*" component={custom404}/>
                     </Switch>
             </BrowserRouter>
