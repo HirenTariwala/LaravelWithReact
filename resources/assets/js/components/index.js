@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Example from './Example';
 import Home from './Home/Home';
+import ProductDetails from './ProductDetails/ProductDetails';
+import Search from './Search/Search';
 import {Provider} from 'react-redux';
 import {createStore,applyMiddleware} from 'redux';
 import promise from 'redux-promise';
@@ -18,6 +20,8 @@ if (document.getElementById('root')) {
             <BrowserRouter>
                     <Switch>
                         <Route exact path="/blogs" component={Example}/>
+                        <Route exact path="/details/:id" component={ProductDetails}/>
+                        <Route exact path="/search" component={Search}/>
                         <Route exact path="/" component={Home}/>
                         <Route exact path="/*" component={custom404}/>
                     </Switch>

@@ -14,7 +14,7 @@ class Home extends React.Component{
         const isMobile =  MobileDevice();
         return(
             <div>
-                <Header isMobile={isMobile}/>
+                <Header {...this.props} isMobile={isMobile}/>
                 { isMobile ? <HomeForMobile/> : <HomeForDesktop/> }
             </div>
         )
