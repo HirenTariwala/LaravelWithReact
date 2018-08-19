@@ -6,16 +6,20 @@ import {MobileDevice} from '../../common/detectMobileDevice'
 
 class Home extends React.Component{
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
+        this.state = {
+            isLoading:false
+        }
     }
 
     render(){
+        const { isLoading } = this.state;
         const isMobile =  MobileDevice();
         return(
             <div>
                 <Header {...this.props} isMobile={isMobile}/>
-                { isMobile ? <HomeForMobile/> : <HomeForDesktop/> }
+                { isMobile ? <HomeForMobile isLoading={isLoading}/> : <HomeForDesktop isLoading={isLoading}/> }
             </div>
         )
     }

@@ -17,7 +17,7 @@ class Header extends React.Component{
     render(){
         const {isMobile} = this.props;
         return(
-            <AppBar position="static" color='default'>
+            <AppBar position="sticky" color='default'>
                 <Toolbar>
                     <Typography align='right' variant="title" color="textSecondary" >
                         MyWebSiteLogo
