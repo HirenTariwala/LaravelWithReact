@@ -65654,7 +65654,6 @@ var HomeForMobile = function (_React$Component) {
                             null,
                             'No Tab Found'
                         );
-
                 }
             }
 

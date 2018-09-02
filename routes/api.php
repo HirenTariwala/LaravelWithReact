@@ -17,6 +17,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+Route::post('addBlog','BlogController@addBlog');
+Route::put('updateBlog','BlogController@updateBlog');
+Route::delete('deleteBlog','BlogController@deleteBlog');
 Route::get('blogs','BlogController@getAllBlogs');
 Route::get('nextBlogs/{skip}/{limit}','BlogController@getNextBlogs');
 Route::get('getMyToken','AuthController@getMyToken');
